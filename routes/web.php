@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SliderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return inertia('Welcome');
 });
+
+//Route::get('/', function () {
+//    return inertia('Admin/Dashboard');
+//});
+
+//Admin
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/slider', [SliderController::class, 'index'])->name('slider');
