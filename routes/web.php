@@ -25,4 +25,8 @@ Route::get('/', function () {
 
 //Admin
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('/slider', [SliderController::class, 'index'])->name('slider');
+
+//Slider
+Route::get('/slider-show', [SliderController::class, 'index'])->name('slider.show');
+Route::get('/slider-create', [SliderController::class, 'create'])->name('slider.create');
+Route::post('/slider-store', [SliderController::class, 'store'])->name('slider.store');
