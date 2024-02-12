@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SliderController;
 use Illuminate\Support\Facades\Route;
@@ -30,3 +32,22 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::get('/slider-show', [SliderController::class, 'index'])->name('slider.show');
 Route::get('/slider-create', [SliderController::class, 'create'])->name('slider.create');
 Route::post('/slider-store', [SliderController::class, 'store'])->name('slider.store');
+Route::get('/slider/{id}/edit', [SliderController::class, 'edit'])->name('slider.edit');
+Route::post('/slider/{id}/update', [SliderController::class, 'update'])->name('slider.update');
+Route::post('/slider/{id}/delete', [SliderController::class, 'delete'])->name('slider.delete');
+
+//Brand
+Route::get('/brand-show', [BrandController::class,'index'])->name('brand.show');
+Route::get('/brand-create', [BrandController::class,'create'])->name('brand.create');
+Route::post('/brand-store', [BrandController::class,'store'])->name('brand.store');
+Route::get('/brand/{id}/edit', [BrandController::class,'edit'])->name('brand.edit');
+Route::post('/brand/{id}/update', [BrandController::class,'update'])->name('brand.update');
+Route::post('/brand/{id}/delete', [BrandController::class,'delete'])->name('brand.delete');
+
+//Category
+Route::get('/category-show', [CategoryController::class,'index'])->name('category.show');
+Route::get('/category-create', [CategoryController::class,'create'])->name('category.create');
+Route::post('/category-store', [CategoryController::class,'store'])->name('category.store');
+Route::get('/category/{id}/edit', [CategoryController::class,'edit'])->name('category.edit');
+Route::post('/category/{id}/update', [CategoryController::class,'update'])->name('category.update');
+Route::post('/category/{id}/delete', [CategoryController::class,'delete'])->name('category.delete');

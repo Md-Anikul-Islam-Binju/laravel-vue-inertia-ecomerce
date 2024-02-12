@@ -13,26 +13,53 @@
                         </Link>
                     </li>
 
+                    <li class="nav-item">
+                        <Link href="/slider-show" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Slider
+                            </p>
+                        </Link>
+                    </li>
+
+                    <li class="nav-item">
+                        <Link href="/brand-show" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Brand
+                            </p>
+                        </Link>
+                    </li>
+
+                    <li class="nav-item">
+                        <Link href="/category-show" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Category
+                            </p>
+                        </Link>
+                    </li>
+
 
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
-                                Slider
+                                Test
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <Link href="/slider-create" class="nav-link">
+                                <Link href="#" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Slider Create</p>
+                                    <p>Test Create</p>
                                 </Link>
                             </li>
                             <li class="nav-item">
-                                <Link href="/slider-show" class="nav-link">
+                                <Link href="#" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Slider List</p>
+                                    <p>Test List</p>
                                 </Link>
                             </li>
                         </ul>

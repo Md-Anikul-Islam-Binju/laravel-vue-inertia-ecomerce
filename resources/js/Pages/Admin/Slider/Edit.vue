@@ -3,13 +3,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Slider Form</h1>
+                    <h1>Slider Edit</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <button class="btn btn-primary">
-                            <Link href="/slider-show" style="color: white">Back</Link>
-                        </button>
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Slider Edit</li>
                     </ol>
                 </div>
             </div>
@@ -21,13 +20,14 @@
                 <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Slider Add</h3>
+                            <h3 class="card-title">Slider Edit</h3>
                         </div>
-                        <form @submit.prevent="submit" accept="multipart/form-data">
+                        <form @submit.prevent="update" accept="multipart/form-data">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Title</label>
                                     <input type="text" class="form-control" v-model="form.title" placeholder="Enter Title">
+
                                 </div>
                                 <div class="form-group">
                                     <label>Position</label>
@@ -43,6 +43,14 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="exampleSelectRounded0">Status</label>
+                                    <select v-model="form.status" class="custom-select rounded-0" id="exampleSelectRounded0">
+                                        <option :value="1" :selected="form.status === 1">Active</option>
+                                        <option :value="0" :selected="form.status === 0">Inactive</option>
+                                    </select>
+                                </div>
+
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -54,31 +62,35 @@
         </div>
     </section>
 </template>
-
 <script>
 import AdminLayout from "@/AdminBase/AdminLayout.vue";
-import {Link} from "@inertiajs/vue3";
-export default {
-    name: "Create",
-    layout: AdminLayout,
-    data(){
-        return{
-            form:this.$inertia.form({
-                title:null,
-                position:null,
-                image:null,
-            })
-        }
-    },
-    methods:{
-        submit(){
-            this.form.post("/slider-store");
-        }
-    },
-    components: {
-        Link
-    }
 
+export default {
+    name: "Edit",
+    layout: AdminLayout,
+    props: {
+        error: Object,
+        slider: Object
+    },
+
+
+    data() {
+        return {
+            form: this.$inertia.form({
+                title: this.slider.title ?? '',
+                position: this.slider.position ?? 0,
+                image: null,
+                status: this.slider.status ?? 0,
+            })
+
+        }
+    },
+
+    methods:{
+        update() {
+            this.form.post(`/slider/${this.slider.id}/update`)
+        }
+    }
 }
 </script>
 
