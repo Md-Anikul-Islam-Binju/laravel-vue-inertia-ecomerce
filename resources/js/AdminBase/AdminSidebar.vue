@@ -42,6 +42,16 @@
 
 
                     <li class="nav-item">
+                        <Link href="/product-show" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Product
+                            </p>
+                        </Link>
+                    </li>
+
+
+                    <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>

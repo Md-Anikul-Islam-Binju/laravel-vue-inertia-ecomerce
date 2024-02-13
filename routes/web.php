@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use Illuminate\Support\Facades\Route;
 
@@ -51,3 +52,13 @@ Route::post('/category-store', [CategoryController::class,'store'])->name('categ
 Route::get('/category/{id}/edit', [CategoryController::class,'edit'])->name('category.edit');
 Route::post('/category/{id}/update', [CategoryController::class,'update'])->name('category.update');
 Route::post('/category/{id}/delete', [CategoryController::class,'delete'])->name('category.delete');
+
+
+
+//Product
+Route::get('/product-show', [ProductController::class,'index'])->name('product.show');
+Route::get('/product-create', [ProductController::class,'create'])->name('product.create');
+Route::post('/product-store', [ProductController::class,'store'])->name('product.store');
+Route::get('/product/{id}/edit', [ProductController::class,'edit'])->name('product.edit');
+Route::post('/product/{id}/update', [ProductController::class,'update'])->name('product.update');
+Route::post('/product/{id}/delete', [ProductController::class,'delete'])->name('product.delete');
