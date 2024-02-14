@@ -44,6 +44,11 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label>Details</label>
+                                    <textarea type="text" class="form-control" v-model="form.details" placeholder="Enter Details"></textarea>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="exampleSelectRounded0">Status</label>
                                     <select v-model="form.status" class="custom-select rounded-0" id="exampleSelectRounded0">
                                         <option :value="1" :selected="form.status === 1">Active</option>
@@ -79,6 +84,7 @@ export default {
             form: this.$inertia.form({
                 title: this.slider.title ?? '',
                 position: this.slider.position ?? 0,
+                details: this.slider.details ?? 0,
                 image: null,
                 status: this.slider.status ?? 0,
             })

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Frontend\HomePageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,17 +19,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return inertia('Welcome');
-});
+//Route::get('/', function () {
+//    return inertia('Welcome');
+//});
 
 //Route::get('/', function () {
 //    return inertia('Admin/Dashboard');
 //});
 
+//Home Page
+Route::get('/', [HomePageController::class, 'index']);
+
+
 //Admin
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
 //Slider
 Route::get('/slider-show', [SliderController::class, 'index'])->name('slider.show');
 Route::get('/slider-create', [SliderController::class, 'create'])->name('slider.create');

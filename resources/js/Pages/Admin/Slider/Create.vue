@@ -42,6 +42,10 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label>Details</label>
+                                    <textarea type="text" class="form-control" v-model="form.details" placeholder="Enter Details"></textarea>
+                                </div>
 
                             </div>
                             <div class="card-footer">
@@ -66,6 +70,7 @@ export default {
             form:this.$inertia.form({
                 title:null,
                 position:null,
+                details:null,
                 image:null,
             })
         }

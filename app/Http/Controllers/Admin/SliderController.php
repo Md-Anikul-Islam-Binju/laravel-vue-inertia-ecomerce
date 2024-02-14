@@ -36,6 +36,7 @@ class SliderController extends Controller
         }
         $slider->title = $request->title;
         $slider->position = $request->position;
+        $slider->details = $request->details;
         $slider->save();
         return redirect()->route('slider.show');
 
@@ -62,6 +63,7 @@ class SliderController extends Controller
         }
         $slider->title = $request->title;
         $slider->position = $request->position;
+        $slider->details = $request->details;
         $slider->status = $request->status;
         $slider->save();
         return redirect()->route('slider.show');
