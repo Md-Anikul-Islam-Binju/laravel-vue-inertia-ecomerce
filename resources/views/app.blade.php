@@ -30,8 +30,6 @@
   </head>
   <body>
     @inertia
-
-
     {{-- Admin Template Scripts --}}
     <script src="{{asset('backend/plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('backend/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
