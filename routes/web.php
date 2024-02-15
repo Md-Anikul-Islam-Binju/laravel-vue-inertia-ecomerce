@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Frontend\HomePageController;
+use App\Http\Controllers\Frontend\ProductPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,8 +30,8 @@ use Illuminate\Support\Facades\Route;
 
 //Home Page
 Route::get('/', [HomePageController::class, 'index']);
-
-
+Route::get('/product', [ProductPageController::class, 'product']);
+Route::get('/product-details', [ProductPageController::class, 'productDetails']);
 //Admin
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 //Slider
