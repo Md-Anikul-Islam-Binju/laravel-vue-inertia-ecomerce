@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductPageController extends Controller
@@ -12,8 +13,9 @@ class ProductPageController extends Controller
         return inertia('Frontend/Product/Product');
     }
 
-    public function productDetails()
+    public function productDetails(Request $request)
     {
-        return inertia('Frontend/Product/ProductDetails');
+        $product = Product::where('id',$request->productId)->first();
+        return inertia('Frontend/Product/ProductDetails',compact('product'));
     }
 }
