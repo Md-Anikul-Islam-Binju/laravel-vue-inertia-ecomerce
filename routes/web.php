@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Frontend\AuthUserController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Frontend\ProductPageController;
 use Illuminate\Support\Facades\Route;
@@ -29,11 +31,21 @@ use Illuminate\Support\Facades\Route;
 //});
 
 //Home Page
+Route::get('/user-register', [AuthUserController::class, 'register']);
+Route::get('/user-login', [AuthUserController::class, 'login']);
+
 Route::get('/', [HomePageController::class, 'index']);
 Route::get('/product', [ProductPageController::class, 'product']);
 Route::get('/product-details', [ProductPageController::class, 'productDetails']);
+
+
+
 //Admin
+Route::get('/login', [AuthController::class, 'login']);
+
+//Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
 //Slider
 Route::get('/slider-show', [SliderController::class, 'index'])->name('slider.show');
 Route::get('/slider-create', [SliderController::class, 'create'])->name('slider.create');
@@ -57,8 +69,6 @@ Route::post('/category-store', [CategoryController::class,'store'])->name('categ
 Route::get('/category/{id}/edit', [CategoryController::class,'edit'])->name('category.edit');
 Route::post('/category/{id}/update', [CategoryController::class,'update'])->name('category.update');
 Route::post('/category/{id}/delete', [CategoryController::class,'delete'])->name('category.delete');
-
-
 
 //Product
 Route::get('/product-show', [ProductController::class,'index'])->name('product.show');

@@ -13,18 +13,10 @@
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <button class="dropdown-item" type="button">Sign in</button>
-                            <button class="dropdown-item" type="button">Sign up</button>
-                        </div>
-                    </div>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">EN</button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <button class="dropdown-item" type="button">FR</button>
-                            <button class="dropdown-item" type="button">AR</button>
-                            <button class="dropdown-item" type="button">RU</button>
+                        <a class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown" @click="toggleAccount">My Account</a>
+                        <div class="dropdown-menu dropdown-menu-right account-show" id="account-show">
+                            <Link class="dropdown-item" href="/user-register">Sign up</Link>
+                            <Link class="dropdown-item" href="/user-login">Sign in</Link>
                         </div>
                     </div>
                 </div>
@@ -42,10 +34,10 @@
         </div>
         <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
             <div class="col-lg-4">
-                <a href="" class="text-decoration-none">
+                <Link href="/" class="text-decoration-none">
                     <span class="h1 text-uppercase text-primary bg-dark px-2">New</span>
                     <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Shop</span>
-                </a>
+                </Link>
             </div>
             <div class="col-lg-4 col-6 text-left">
                 <form action="">
@@ -112,11 +104,11 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
                                 <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Shopping Cart</a>
+                                    <Link href="#" class="dropdown-item">Shopping Cart</Link>
                                     <a href="checkout.html" class="dropdown-item">Checkout</a>
                                 </div>
                             </div>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            <Link href="#" class="nav-item nav-link">Contact</Link>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                             <a href="" class="btn px-0">
@@ -138,13 +130,14 @@
 
 <script>
 import {Link} from "@inertiajs/vue3";
-
 export default {
     name: "HomeNavbar",
     methods: {
         toggleNavbar() {
-            // Toggle the collapse state of the navbar
             $('#navbar-vertical').collapse('toggle');
+        },
+        toggleAccount(){
+            $('#account-show').collapse('toggle');
         }
     },
     components: {
