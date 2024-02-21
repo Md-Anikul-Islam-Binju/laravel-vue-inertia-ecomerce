@@ -44,8 +44,29 @@ class AuthUserController extends Controller
         return inertia('Frontend/Auth/UserLogin');
     }
 
+
+    public function loginCheckUser(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+        $credentials = $request->only('email', 'password');
+        if (auth()->attempt($credentials)) {
+            return redirect()->route('user.account');
+        }
+        return back()->with('message', 'Invalid credentials');
+    }
+
     public function authUserAccount()
     {
-        return inertia('Frontend/Auth/UserAccount');
+        $user = Auth::user();
+        return inertia('Frontend/Auth/UserAccount',compact('user'));
+    }
+
+    public function logout()
+    {
+        auth()->logout();
+        return redirect()->route('home');
     }
 }

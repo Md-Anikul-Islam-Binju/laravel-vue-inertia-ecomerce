@@ -34,17 +34,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/user-register', [AuthUserController::class, 'register']);
 Route::post('/user-register-store', [AuthUserController::class, 'userRegisterStore']);
 Route::get('/user-login', [AuthUserController::class, 'login']);
-
-Route::get('/', [HomePageController::class, 'index']);
+Route::post('/user-login-check', [AuthUserController::class, 'loginCheckUser']);
+Route::get('/', [HomePageController::class, 'index'])->name('home');
 Route::get('/product', [ProductPageController::class, 'product']);
 Route::get('/product-details', [ProductPageController::class, 'productDetails']);
 
-
 Route::middleware(['auth', 'checkRole:2'])->group(callback: function () {
-
 //Auth User
-Route::get('/user-account', [AuthUserController::class, 'authUserAccount']);
-
+Route::get('/user-account', [AuthUserController::class, 'authUserAccount'])->name('user.account');
+//Logout
+Route::get('/user-logout', [AuthUserController::class, 'logout']);
 });
 
 
@@ -55,7 +54,6 @@ Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/admin-login', [AuthController::class, 'loginCheck']);
 
 Route::middleware(['auth', 'checkRole:1'])->group(callback: function () {
-
 //Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 //Logout
