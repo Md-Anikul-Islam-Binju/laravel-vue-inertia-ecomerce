@@ -74,6 +74,15 @@
                             </li>
                         </ul>
                     </li>
+
+                    <li class="nav-item">
+                        <Link href="/admin-logout" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Logout
+                            </p>
+                        </Link>
+                    </li>
                 </ul>
             </nav>
         </div>
