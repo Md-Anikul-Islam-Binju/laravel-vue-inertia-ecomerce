@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Frontend\AuthUserController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Frontend\ProductPageController;
 use Illuminate\Support\Facades\Route;
@@ -22,28 +23,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return inertia('Welcome');
-//});
 
-//Route::get('/', function () {
-//    return inertia('Admin/Dashboard');
-//});
-
-//Home Page
+//User Register & login
 Route::get('/user-register', [AuthUserController::class, 'register']);
 Route::post('/user-register-store', [AuthUserController::class, 'userRegisterStore']);
 Route::get('/user-login', [AuthUserController::class, 'login']);
 Route::post('/user-login-check', [AuthUserController::class, 'loginCheckUser']);
+//Home page
 Route::get('/', [HomePageController::class, 'index'])->name('home');
-Route::get('/product', [ProductPageController::class, 'product']);
+//Product
+Route::get('/category-under-product/{id}', [ProductPageController::class, 'product']);
 Route::get('/product-details', [ProductPageController::class, 'productDetails']);
+//Cart
+Route::get('/cart', [CartController::class, 'cart'])->name('cart');
+Route::get('/add-to-cart/{product_id}', [CartController::class, 'addToCart'])->name('add.to.cart');
+Route::get('/remove-to-cart/{product_id}', [CartController::class, 'removeToCart'])->name('remove.to.cart');
+Route::get('/update-cart-quantity/{product_id}', [CartController::class, 'updateCartQuantity']);
 
 Route::middleware(['auth', 'checkRole:2'])->group(callback: function () {
 //Auth User
 Route::get('/user-account', [AuthUserController::class, 'authUserAccount'])->name('user.account');
 //Logout
 Route::get('/user-logout', [AuthUserController::class, 'logout']);
+//
 });
 
 

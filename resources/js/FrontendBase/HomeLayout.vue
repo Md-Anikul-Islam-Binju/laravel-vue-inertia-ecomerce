@@ -4,7 +4,7 @@
     </head>
     <body>
         <div>
-            <HomeNavbar/>
+            <HomeNavbar :user="user" :categories="categories" />
             <slot/>
             <HomeFooter/>
         </div>
@@ -20,6 +20,10 @@ import HomeFooter from "@/FrontendBase/HomeFooter.vue";
 export default {
     name: "HomeLayout",
     components: {HomeFooter, HomeNavbar},
+    props:{
+        user: Object,
+        categories: Object,
+    }
 
 }
 </script>
