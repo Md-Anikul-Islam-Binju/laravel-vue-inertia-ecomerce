@@ -57,7 +57,14 @@
                             <h5>Total</h5>
                             <h5>{{ total }}</h5>
                         </div>
-                        <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button>
+                        <div v-if="!user">
+                            <Link href="/user-login" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</Link>
+                        </div>
+                        <div v-else>
+                            <Link href="/checkout" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</Link>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -73,7 +80,8 @@ export default {
     name: "Cart",
     layout: HomeLayout,
     props: {
-        cart: Object
+        cart: Object,
+        user:Object
     },
     components: {
         Link

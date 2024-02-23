@@ -75,5 +75,12 @@ class CartController extends Controller
         }
     }
 
+    public function checkOut()
+    {
+        $user = auth()->user();
+        //$cart= session()->get('cart');
+        return inertia('Frontend/Shopping/Checkout',compact('user'));
+    }
+
 
 }

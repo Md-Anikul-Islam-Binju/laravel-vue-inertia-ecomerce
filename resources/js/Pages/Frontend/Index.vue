@@ -153,10 +153,6 @@
     </div>
     <!-- Offer End -->
 
-
-
-
-
 </template>
 
 <script>
