@@ -82,26 +82,25 @@ class CartController extends Controller
     {
         $user = auth()->user();
         $cart = session()->get('cart');
-        $orderSubtotal = 0; // Initialize orderSubtotal
-        foreach ($cart as $cartData){
-            $orderSubtotal += $cartData['price'];
+        $orderSubtotal = 0;
+        foreach ($cart as $cartItem) {
+            $cartItem['subtotal'] = $cartItem['price'] * $cartItem['quantity'];
+            $orderSubtotal += $cartItem['subtotal'];
         }
         return inertia('Frontend/Shopping/Checkout',compact('user','cart','orderSubtotal'));
     }
 
     public function orderConfirm(Request $request)
     {
-        dd($request->all());
+
         $user = auth()->user();
         $order = session()->get('cart');
         $shippingCost = 100; // Adjusted shipping cost
         $orderSubtotal = 0; // Initialize orderSubtotal
-        foreach ($order as $orderData){
-            $orderSubtotal += $orderData['price'];
+        foreach ($order as $orderData) {
+            $orderData['subtotal'] = $orderData['price'] * $orderData['quantity'];
+            $orderSubtotal += $orderData['subtotal'];
         }
-
-
-
         // Create order
         $newOrder = new Order();
         $newOrder->user_id = $user->id;
@@ -115,6 +114,7 @@ class CartController extends Controller
             $item = new OrderItem();
             $item->order_id = $newOrder->id;
             $item->product_name = $orderData['name'];
+            $item->quantity = $orderData['quantity'];
             $item->price = $orderData['price'];
             $item->save();
         }
@@ -129,6 +129,8 @@ class CartController extends Controller
             $shippingInfo->address = $request->input('address');
             $shippingInfo->payment_method = 'cod';
             $shippingInfo->save();
+            // Clear cart
+            session()->forget('cart');
             return redirect()->route('home'); //
         }else{
 
