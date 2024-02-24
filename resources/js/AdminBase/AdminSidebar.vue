@@ -61,7 +61,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <Link href="/order" class="nav-link">
+                                <Link href="/order-list" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Order</p>
                                 </Link>

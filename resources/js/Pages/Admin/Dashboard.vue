@@ -4,8 +4,8 @@
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>150</h3>
-                        <p>New Orders</p>
+                        <h3>{{ totalUser }}</h3>
+                        <p>Total User</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-bag"></i>
@@ -17,8 +17,8 @@
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
-                        <p>Bounce Rate</p>
+                        <h3>{{ totalBrand }}</h3>
+                        <p>Total Brand</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
@@ -30,8 +30,8 @@
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>44</h3>
-                        <p>User Registrations</p>
+                        <h3>{{ totalProduct }}</h3>
+                        <p>Total Product</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
@@ -43,8 +43,8 @@
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>65</h3>
-                        <p>Unique Visitors</p>
+                        <h3>{{ totalOrder }}</h3>
+                        <p>Total Order</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-pie-graph"></i>
@@ -60,7 +60,13 @@
 import AdminLayout from "../../AdminBase/AdminLayout.vue";
 export default {
     name: "Dashboard",
-    layout: AdminLayout
+    layout: AdminLayout,
+    props:{
+        totalUser:Object,
+        totalBrand:Object,
+        totalProduct:Object,
+        totalOrder:Object,
+    }
 }
 </script>
 

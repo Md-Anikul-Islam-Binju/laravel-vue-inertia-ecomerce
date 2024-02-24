@@ -97,7 +97,8 @@ Route::middleware(['auth', 'checkRole:1'])->group(callback: function () {
     Route::post('/product/{id}/delete', [ProductController::class,'delete'])->name('product.delete');
 
     //Order
-    Route::get('/order', [OrderManageController::class,'orderManage'])->name('order');
+    Route::get('/order-list', [OrderManageController::class,'orderList'])->name('order.list');
+    Route::get('/order-manage/{id}', [OrderManageController::class,'orderManage'])->name('order.manage');
 });
 
 
