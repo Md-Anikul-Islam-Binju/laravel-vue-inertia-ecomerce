@@ -45,7 +45,7 @@ Route::middleware(['auth', 'checkRole:2'])->group(callback: function () {
     Route::get('/user-account', [AuthUserController::class, 'authUserAccount'])->name('user.account');
     //checkout
     Route::get('/checkout', [CartController::class, 'checkOut'])->name('checkout');
-
+    Route::post('/order-confirm', [CartController::class, 'orderConfirm'])->name('order.confirm');
     //Logout
     Route::get('/user-logout', [AuthUserController::class, 'logout']);
 //

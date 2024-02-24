@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Product;
+use App\Models\ShippingInfo;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -78,8 +81,58 @@ class CartController extends Controller
     public function checkOut()
     {
         $user = auth()->user();
-        //$cart= session()->get('cart');
-        return inertia('Frontend/Shopping/Checkout',compact('user'));
+        $cart = session()->get('cart');
+        $orderSubtotal = 0; // Initialize orderSubtotal
+        foreach ($cart as $cartData){
+            $orderSubtotal += $cartData['price'];
+        }
+        return inertia('Frontend/Shopping/Checkout',compact('user','cart','orderSubtotal'));
+    }
+
+    public function orderConfirm(Request $request)
+    {
+        dd($request->all());
+        $user = auth()->user();
+        $order = session()->get('cart');
+        $shippingCost = 100; // Adjusted shipping cost
+        $orderSubtotal = 0; // Initialize orderSubtotal
+        foreach ($order as $orderData){
+            $orderSubtotal += $orderData['price'];
+        }
+
+
+
+        // Create order
+        $newOrder = new Order();
+        $newOrder->user_id = $user->id;
+        $newOrder->subtotal = $orderSubtotal;
+        $newOrder->shipping_cost = $shippingCost;
+        $newOrder->total = $orderSubtotal + $shippingCost;
+        $newOrder->save();
+
+        // Create order items
+        foreach ($order as $orderData) {
+            $item = new OrderItem();
+            $item->order_id = $newOrder->id;
+            $item->product_name = $orderData['name'];
+            $item->price = $orderData['price'];
+            $item->save();
+        }
+
+        // Create shipping info
+        if($request->payment_method == 'cod'){
+            $shippingInfo = new ShippingInfo();
+            $shippingInfo->order_id = $newOrder->id;
+            $shippingInfo->name = $request->input('name');
+            $shippingInfo->email = $request->input('email');
+            $shippingInfo->mobile_no = $request->input('mobile_no');
+            $shippingInfo->address = $request->input('address');
+            $shippingInfo->payment_method = 'cod';
+            $shippingInfo->save();
+            return redirect()->route('home'); //
+        }else{
+
+        }
     }
 
 
