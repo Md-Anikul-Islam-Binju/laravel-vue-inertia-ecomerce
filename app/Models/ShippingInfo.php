@@ -17,4 +17,8 @@ class ShippingInfo extends Model
         'payment_method',
 
     ];
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }

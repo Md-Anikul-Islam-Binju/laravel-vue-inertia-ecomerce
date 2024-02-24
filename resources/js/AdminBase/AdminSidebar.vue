@@ -55,21 +55,15 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
-                                Test
+                                Order Manage
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <Link href="#" class="nav-link">
+                                <Link href="/order" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Test Create</p>
-                                </Link>
-                            </li>
-                            <li class="nav-item">
-                                <Link href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Test List</p>
+                                    <p>Order</p>
                                 </Link>
                             </li>
                         </ul>

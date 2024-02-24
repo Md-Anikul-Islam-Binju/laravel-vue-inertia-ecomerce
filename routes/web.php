@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\OrderManageController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Frontend\AuthUserController;
@@ -95,6 +96,8 @@ Route::middleware(['auth', 'checkRole:1'])->group(callback: function () {
     Route::post('/product/{id}/update', [ProductController::class,'update'])->name('product.update');
     Route::post('/product/{id}/delete', [ProductController::class,'delete'])->name('product.delete');
 
+    //Order
+    Route::get('/order', [OrderManageController::class,'orderManage'])->name('order');
 });
 
 
